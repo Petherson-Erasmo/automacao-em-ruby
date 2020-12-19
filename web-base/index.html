@@ -9,23 +9,29 @@
 
 <body>
     <div id="app">
-        <!--Para o vue funcionar eu preciso que todo o código html
-                        fique dentro de uma div principal com o id app-->
+    <!--Para o vue funcionar eu preciso que todo o código html
+    fique dentro de uma div principal com o id app-->
         <h1>Cadastro de alunos</h1>
         <!-- A tag form é um formulário em HTML -->
         <form>
             <!-- eu uso o label para indicar que o label se refere ao input de name = nomeCompleto -->
             <label for="nomeCompleto">Nome Completo</label>
-            <input name="nomeCompleto" type="text">
-
+            <input name="nomeCompleto" type="text" v-model="form.nome">
+            <!-- A diretiva v-model é usada para criar interligações de mão dupla (two-way binding) 
+            entre os dados e elementos input, textarea e select de formulários.-->
             <label for="email">Email</label>
-            <input name="email" type="text">
+            <input name="email" type="text" v-model="form.email">
 
             <label for="nota">Nota</label>
-            <input name="nota" type="text">
+            <input name="nota" type="text" v-model="form.nota">
 
             <input type="button" value="Cadastrar">
         </form>
+        
+        <span>
+            {{form.nome}} - {{form.email}} - {{form.nota}}
+        </span>
+
         <div>
             <table class="tabela">
                 <thead>
@@ -54,6 +60,11 @@
             // encontrar a div que tem o id com o valor informado
             data: { // O objeto data é um objeto padrão do vue, para trabalhar com dados
                 // e dentro dele eu consigo criar um array 
+                form: {
+                    nome: '',
+                    email: '',
+                    nota: ''
+                },
                 alunos: [
                     { nome: 'Petherson', email: 'petherson@gmail.com', nota: 8.5 },
                     { nome: 'Camila', email: 'camila@gmail.com', nota: 10 },
