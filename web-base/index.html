@@ -1,58 +1,59 @@
 <!DOCTYPE html>
-<<html>
+<html>
 
-    <head>
-        <title>WebBase from QA Ninja</title>
-        <script src="js/vue.js"></script> <!--Invoca o vue-->
-    </head>
+<head>
+    <title>WebBase from QA Ninja</title>
+    <script src="js/vue.js"></script>
+    <!--Invoca o vue-->
+</head>
 
-    <body>
-        <div id="app"> <!--Para o vue funcionar eu preciso que todo o código html
+<body>
+    <div id="app">
+        <!--Para o vue funcionar eu preciso que todo o código html
                         fique dentro de uma div principal com o id app-->
-            <h1>Cadastro de alunos</h1>
-            <!-- A tag form é um formulário em HTML -->
-            <form>
-                <!-- eu uso o label para indicar que o label se refere ao input de name = nomeCompleto -->
-                <label for="nomeCompleto">Nome Completo</label>
-                <input name="nomeCompleto" type="text">
+        <h1>Cadastro de alunos</h1>
+        <!-- A tag form é um formulário em HTML -->
+        <form>
+            <!-- eu uso o label para indicar que o label se refere ao input de name = nomeCompleto -->
+            <label for="nomeCompleto">Nome Completo</label>
+            <input name="nomeCompleto" type="text">
 
-                <label for="email">Email</label>
-                <input name="email" type="text">
+            <label for="email">Email</label>
+            <input name="email" type="text">
 
-                <label for="nota">Nota</label>
-                <input name="nota" type="text">
+            <label for="nota">Nota</label>
+            <input name="nota" type="text">
 
-                <input type="button" value="Cadastrar">
-            </form>
-            <div>
-                <table>
-                    <thead>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>Nota</th>
-                    </thead>
-                    <tbody>
-                        <!-- O v-for serve para renderizar um lista de elementos com base nos dados de uma array.
+            <input type="button" value="Cadastrar">
+        </form>
+        <div>
+            <table class="tabela">
+                <thead>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Nota</th>
+                </thead>
+                <tbody>
+                    <!-- O v-for serve para renderizar um lista de elementos com base nos dados de uma array.
                         O aluno (singular) é o apelido para o elemento que estiver sendo iterado 
                         (loop "que é feito ou dito repetidamente) através do array
                         O alunos (plural) é a fonte de dados-->
-                        <tr v-for="aluno in alunos">
-                            <td>{{aluno.nome}}</td>
-                            <td>{{aluno.email}}</td>
-                            <td>{{aluno.nota}}</td>
-                            <td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                    <tr v-for="aluno in alunos">
+                        <td>{{aluno.nome}}</td>
+                        <td>{{aluno.email}}</td>
+                        <td>{{aluno.nota}}</td>
+                        <td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    <!-- Na tag script eu estou vinculando o Vue.js ao html -->
-    <script>
+    </div>
+    <script> //<!-- Na tag script eu estou vinculando o Vue.js ao html -->
         var app = new Vue({
             el: "#app", // O #app é um seletor css para o vue.js 
-                        // encontrar a div que tem o id com o valor informado
+            // encontrar a div que tem o id com o valor informado
             data: { // O objeto data é um objeto padrão do vue, para trabalhar com dados
-                    // e dentro dele eu consigo criar um array 
+                // e dentro dele eu consigo criar um array 
                 alunos: [
                     { nome: 'Petherson', email: 'petherson@gmail.com', nota: 8.5 },
                     { nome: 'Camila', email: 'camila@gmail.com', nota: 10 },
@@ -61,6 +62,31 @@
             },
         })
     </script>
-    </body>
-    
-    </html>
+
+    <style>
+        /* Na próxima linha eu estou estilizando a tabela que tem a class tabela */
+        .tabela { 
+            margin-top: 20px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .table th,
+        .table td {
+            border-top: 1px solid #ccc;
+        }
+        
+        input {
+            display: block;
+        }
+
+        input[type=button] {
+            margin-top: 10px;
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+    </style>
+
+</body>
+
+</html>
