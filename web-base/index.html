@@ -32,15 +32,15 @@
                         <th>Nota</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Petherson Erasmo</td>
-                            <td>pether@gmail.com</td>
-                            <td>10.00</td>
-                        </tr>
-                        <tr>
-                            <td>Fernando Papito</td>
-                            <td>fernando@gmail.com</td>
-                            <td>10.00</td>
+                        <!-- O v-for serve para renderizar um lista de elementos com base nos dados de uma array.
+                        O aluno (singular) é o apelido para o elemento que estiver sendo iterado 
+                        (loop "que é feito ou dito repetidamente) através do array
+                        O alunos (plural) é a fonte de dados-->
+                        <tr v-for="aluno in alunos">
+                            <td>{{aluno.nome}}</td>
+                            <td>{{aluno.email}}</td>
+                            <td>{{aluno.nota}}</td>
+                            <td>
                         </tr>
                     </tbody>
                 </table>
@@ -51,6 +51,14 @@
         var app = new Vue({
             el: "#app", // O #app é um seletor css para o vue.js 
                         // encontrar a div que tem o id com o valor informado
+            data: { // O objeto data é um objeto padrão do vue, para trabalhar com dados
+                    // e dentro dele eu consigo criar um array 
+                alunos: [
+                    { nome: 'Petherson', email: 'petherson@gmail.com', nota: 8.5 },
+                    { nome: 'Camila', email: 'camila@gmail.com', nota: 10 },
+                    { nome: 'Jonatas', email: 'jonatas@gmail.com', nota: 9 }
+                ]
+            },
         })
     </script>
     </body>
