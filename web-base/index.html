@@ -39,6 +39,7 @@
                     <th>Nome</th>
                     <th>Email</th>
                     <th>Nota</th>
+                    <th>Ações</th>
                 </thead>
                 <tbody>
                     <!-- O v-for serve para renderizar um lista de elementos com base nos dados de uma array.
@@ -50,6 +51,8 @@
                         <td>{{aluno.email}}</td>
                         <td>{{aluno.nota}}</td>
                         <td>
+                            <button class="danger" @click="apagarAluno(aluno)">Apagar</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -85,6 +88,10 @@
                     this.alunos.push(this.form) // Aqui estou inserindo os dados no Array.
                     this.limpaFormulario() // Aqui chamo a função para limpar o formulário.
                 },
+                apagarAluno: function (aluno) {
+                    var posicao = this.alunos.indexOf(aluno)
+                    this.alunos.splice(posicao, 1)
+                },
             }
         })
     </script>
@@ -102,6 +109,18 @@
             border-top: 1px solid #ccc;
         }
         
+        /* Na próxima linha estou estilizando a ultima th e td. */
+        .table th:last-child,
+        .table td:last-child {
+            text-align: right;
+        }
+        
+        .danger {
+            background-color: #E91E63;
+            border-color: #E91E63;
+            color: #eee;
+        }
+
         input {
             display: block;
         }
