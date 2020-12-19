@@ -3,45 +3,56 @@
 
     <head>
         <title>WebBase from QA Ninja</title>
+        <script src="js/vue.js"></script> <!--Invoca o vue-->
     </head>
 
     <body>
-        <h1>Cadastro de alunos</h1>
-        <!-- a tag form é um formulário em HTML -->
-        <form>
-            <!-- eu uso o label para indicar que o label se refere ao input de name = nomeCompleto -->
-            <label for="nomeCompleto">Nome Completo</label>
-            <input name="nomeCompleto" type="text">
+        <div id="app"> <!--Para o vue funcionar eu preciso que todo o código html
+                        fique dentro de uma div principal com o id app-->
+            <h1>Cadastro de alunos</h1>
+            <!-- A tag form é um formulário em HTML -->
+            <form>
+                <!-- eu uso o label para indicar que o label se refere ao input de name = nomeCompleto -->
+                <label for="nomeCompleto">Nome Completo</label>
+                <input name="nomeCompleto" type="text">
 
-            <label for="email">Email</label>
-            <input name="email" type="text">
+                <label for="email">Email</label>
+                <input name="email" type="text">
 
-            <label for="nota">Nota</label>
-            <input name="nota" type="text">
+                <label for="nota">Nota</label>
+                <input name="nota" type="text">
 
-            <input type="button" value="Cadastrar">
-        </form>
-        <div>
-            <table>
-                <thead>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Nota</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Petherson Erasmo</td>
-                        <td>pether@gmail.com</td>
-                        <td>10.00</td>
-                    </tr>
-                    <tr>
-                        <td>Fernando Papito</td>
-                        <td>fernando@gmail.com</td>
-                        <td>10.00</td>
-                    </tr>
-                </tbody>
-            </table>
+                <input type="button" value="Cadastrar">
+            </form>
+            <div>
+                <table>
+                    <thead>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Nota</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Petherson Erasmo</td>
+                            <td>pether@gmail.com</td>
+                            <td>10.00</td>
+                        </tr>
+                        <tr>
+                            <td>Fernando Papito</td>
+                            <td>fernando@gmail.com</td>
+                            <td>10.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+        <!-- Na tag script eu estou vinculando o Vue.js ao html -->
+    <script>
+        var app = new Vue({
+            el: "#app", // O #app é um seletor css para o vue.js 
+                        // encontrar a div que tem o id com o valor informado
+        })
+    </script>
     </body>
 
     </html>
