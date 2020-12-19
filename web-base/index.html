@@ -25,12 +25,13 @@
             <label for="nota">Nota</label>
             <input name="nota" type="text" v-model="form.nota">
 
-            <input type="button" value="Cadastrar">
+            <input type="button" value="Cadastrar" @click="adicionarAluno"> 
+            <!-- Ao colocar @click="adicionarAluno estou chamando a função do JS que criei" -->
         </form>
         
-        <span>
+        <!-- <span>
             {{form.nome}} - {{form.email}} - {{form.nota}}
-        </span>
+        </span> -->
 
         <div>
             <table class="tabela">
@@ -66,11 +67,25 @@
                     nota: ''
                 },
                 alunos: [
-                    { nome: 'Petherson', email: 'petherson@gmail.com', nota: 8.5 },
-                    { nome: 'Camila', email: 'camila@gmail.com', nota: 10 },
-                    { nome: 'Jonatas', email: 'jonatas@gmail.com', nota: 9 }
+                    // { nome: 'Petherson', email: 'petherson@gmail.com', nota: 8.5 },
+                    // { nome: 'Camila', email: 'camila@gmail.com', nota: 10 },
+                    // { nome: 'Jonatas', email: 'jonatas@gmail.com', nota: 9 }
                 ]
             },
+            methods: {
+                limpaFormulario: function () {
+                    this.form = {
+                        nome: '',
+                        email: '',
+                        nota: ''
+                    }
+                },
+                adicionarAluno: function () {
+                    // console.log(this.form) // Com o this.form tenho acesso aos objetos do vue.
+                    this.alunos.push(this.form) // Aqui estou inserindo os dados no Array.
+                    this.limpaFormulario() // Aqui chamo a função para limpar o formulário.
+                },
+            }
         })
     </script>
 
