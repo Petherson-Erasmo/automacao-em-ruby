@@ -3,9 +3,13 @@ Dado('que acesso a página de cadastro') do
 end
   
 Quando('submeto o meu cadastro completo') do
-    
-  end
+    find("#fullName").set "Petherson Erasmo"
+    find("#email").set "pethersone@gmail.com"
+    find("#password").set "pet123"
+    click_button "Cadastrar"
+end
   
 Então('sou redirecionado para o Dashboard') do
-    
+    # O expect é um recurso de validação do rspec. O page é um objeto do capybara
+    expect(page).to have_css ".dashboard"
 end
