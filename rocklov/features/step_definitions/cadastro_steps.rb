@@ -4,7 +4,7 @@ end
   
 Quando('submeto o meu cadastro completo') do
     find("#fullName").set "Petherson Erasmo"
-    find("#email").set "pethersone@gmail.com"
+    find("#email").set Faker::Internet.free_email # Substituí o e-mail por esse comando da biblioteca Faker.
     find("#password").set "pet123"
     click_button "Cadastrar"
 end

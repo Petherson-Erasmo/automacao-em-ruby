@@ -1,5 +1,6 @@
 require "capybara"
 require "capybara/cucumber"
+require "faker"
 
 # Na próxima linha estou configurando o capybara
 Capybara.configure do |config|
