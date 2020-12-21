@@ -3,8 +3,12 @@ Dado('que acesso a página de cadastro') do
 end
   
 Quando('submeto o meu cadastro completo') do
+
+    # Na linha a seguir estou encapsulando a função remove_user
+    MongoDB.new.remove_user("pethersone@gmail.com")
+
     find("#fullName").set "Petherson Erasmo"
-    find("#email").set Faker::Internet.free_email # Substituí o e-mail por esse comando da biblioteca Faker.
+    find("#email").set "pethersone@gmail.com" # Substituí o e-mail por esse comando da biblioteca Faker.
     find("#password").set "pet123"
     click_button "Cadastrar"
 end
