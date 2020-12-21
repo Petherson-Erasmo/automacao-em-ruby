@@ -25,11 +25,12 @@ Quando('submeto o meu cadastro sem o nome') do
     click_button "Cadastrar"
 end
   
-Então('vejo a mensagem de alerta: Oops. Informe seu nome completo!') do
-    # A seguir faço duas validações uma com o texto e a outra se o texto está com o css correto.
-    alert = find(".alert-dark")
-    expect(alert.text).to eql "Oops. Informe seu nome completo!"
-end
+# Com o novo step Então('vejo a mensagem de alerta: {string}') do |expect_alert| eu não preciso mais das próximas linhas
+# Então('vejo a mensagem de alerta: Oops. Informe seu nome completo!') do
+#     # A seguir faço duas validações uma com o texto e a outra se o texto está com o css correto.
+#     alert = find(".alert-dark")
+#     expect(alert.text).to eql "Oops. Informe seu nome completo!"
+# end
 
 # sem_email
 Quando('submeto o meu cadastro sem o email') do
@@ -38,11 +39,12 @@ Quando('submeto o meu cadastro sem o email') do
     click_button "Cadastrar"
 end
   
-Então('vejo a mensagem de alerta: Oops. Informe um email válido!') do
-        # A seguir faço duas validações uma com o texto e a outra se o texto está com o css correto.
-        alert = find(".alert-dark")
-        expect(alert.text).to eql "Oops. Informe um email válido!"
-end
+# Com o novo step Então('vejo a mensagem de alerta: {string}') do |expect_alert| eu não preciso mais das próximas linhas
+# Então('vejo a mensagem de alerta: Oops. Informe um email válido!') do
+#         # A seguir faço duas validações uma com o texto e a outra se o texto está com o css correto.
+#         alert = find(".alert-dark")
+#         expect(alert.text).to eql "Oops. Informe um email válido!"
+# end
 
 # email_incorreto 
 # Como o step Então é igual ao step de sem_email eu preciso fazer a penas o quando 
@@ -59,9 +61,15 @@ Quando('submeto o meu cadastro sem a senha') do
     find("#email").set Faker::Internet.free_email # Substituí o e-mail por esse comando da biblioteca Faker.
     click_button "Cadastrar"
 end
-  
-Então('vejo a mensagem de alerta: Oops. Informe sua senha secreta!') do
-    # A seguir faço duas validações uma com o texto e a outra se o texto está com o css correto.
+
+# Com o novo step Então('vejo a mensagem de alerta: {string}') do |expect_alert| eu não preciso mais das próximas linhas
+# Então('vejo a mensagem de alerta: Oops. Informe sua senha secreta!') do
+#     # A seguir faço duas validações uma com o texto e a outra se o texto está com o css correto.
+#     alert = find(".alert-dark")
+#     expect(alert.text).to eql "Oops. Informe sua senha secreta!"
+# end
+
+Então('vejo a mensagem de alerta: {string}') do |expect_alert| # O expect_alert é um argumento.
     alert = find(".alert-dark")
-    expect(alert.text).to eql "Oops. Informe sua senha secreta!"
+    expect(alert.text).to eql expect_alert
 end

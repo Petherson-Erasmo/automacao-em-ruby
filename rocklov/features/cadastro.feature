@@ -19,7 +19,8 @@ Funcionalidade: Cadastro
 
         Dado que acesso a página de cadastro
         Quando submeto o meu cadastro sem o nome
-        Então vejo a mensagem de alerta: Oops. Informe seu nome completo!
+        # Antes a mensagem de alerta estava sem as aspas duplas, passando a mensagem em aspas duplas elas passam a ser um argumento.
+        Então vejo a mensagem de alerta: "Oops. Informe seu nome completo!"
 
     @sem_email
     @tentativa_cadastro
@@ -27,7 +28,8 @@ Funcionalidade: Cadastro
 
         Dado que acesso a página de cadastro
         Quando submeto o meu cadastro sem o email
-        Então vejo a mensagem de alerta: Oops. Informe um email válido!
+        # Antes a mensagem de alerta estava sem as aspas duplas, passando a mensagem em aspas duplas elas passam a ser um argumento.
+        Então vejo a mensagem de alerta: "Oops. Informe um email válido!"
 
     @email_incorreto
     @tentativa_cadastro
@@ -35,7 +37,8 @@ Funcionalidade: Cadastro
 
         Dado que acesso a página de cadastro
         Quando submeto o meu cadastro com o email incorreto
-        Então vejo a mensagem de alerta: Oops. Informe um email válido!
+        # Antes a mensagem de alerta estava sem as aspas duplas, passando a mensagem em aspas duplas elas passam a ser um argumento.
+        Então vejo a mensagem de alerta: "Oops. Informe um email válido!"
 
     @sem_senha
     @tentativa_cadastro
@@ -43,4 +46,5 @@ Funcionalidade: Cadastro
 
         Dado que acesso a página de cadastro
         Quando submeto o meu cadastro sem a senha
-        Então vejo a mensagem de alerta: Oops. Informe sua senha secreta!
+        # Antes a mensagem de alerta estava sem as aspas duplas, passando a mensagem em aspas duplas elas passam a ser um argumento.
+        Então vejo a mensagem de alerta: "Oops. Informe sua senha secreta!"
