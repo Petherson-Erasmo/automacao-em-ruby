@@ -36,12 +36,13 @@ Então('sou redirecionado para o Dashboard') do
     expect(page).to have_css ".dashboard"
 end
 
-# sem_nome
-Quando('submeto o meu cadastro sem o nome') do
-    find("#email").set Faker::Internet.free_email # Substituí o e-mail por esse comando da biblioteca Faker.
-    find("#password").set "pet123"
-    click_button "Cadastrar"
-end
+# # sem_nome
+# O seguinte step foi substituído pelo 1° step "Quando"
+# Quando('submeto o meu cadastro sem o nome') do
+#     find("#email").set Faker::Internet.free_email # Substituí o e-mail por esse comando da biblioteca Faker.
+#     find("#password").set "pet123"
+#     click_button "Cadastrar"
+# end
   
 # Com o novo step Então('vejo a mensagem de alerta: {string}') do |expect_alert| eu não preciso mais das próximas linhas
 # Então('vejo a mensagem de alerta: Oops. Informe seu nome completo!') do
@@ -50,12 +51,13 @@ end
 #     expect(alert.text).to eql "Oops. Informe seu nome completo!"
 # end
 
-# sem_email
-Quando('submeto o meu cadastro sem o email') do
-    find("#fullName").set "Petherson Erasmo"
-    find("#password").set "pet123"
-    click_button "Cadastrar"
-end
+# # sem_email
+# O seguinte step foi substituído pelo 1° step "Quando"
+# Quando('submeto o meu cadastro sem o email') do
+#     find("#fullName").set "Petherson Erasmo"
+#     find("#password").set "pet123"
+#     click_button "Cadastrar"
+# end
   
 # Com o novo step Então('vejo a mensagem de alerta: {string}') do |expect_alert| eu não preciso mais das próximas linhas
 # Então('vejo a mensagem de alerta: Oops. Informe um email válido!') do
@@ -64,21 +66,23 @@ end
 #         expect(alert.text).to eql "Oops. Informe um email válido!"
 # end
 
-# email_incorreto 
-# Como o step Então é igual ao step de sem_email eu preciso fazer a penas o quando 
-Quando('submeto o meu cadastro com o email incorreto') do
-    find("#fullName").set "Petherson Erasmo"
-    find("#email").set "email*incorreto,com"
-    find("#password").set "pet123"
-    click_button "Cadastrar"
-end
+# # email_incorreto
+# O seguinte step foi substituído pelo 1° step "Quando"
+# # Como o step Então é igual ao step de sem_email eu preciso fazer a penas o quando 
+# Quando('submeto o meu cadastro com o email incorreto') do
+#     find("#fullName").set "Petherson Erasmo"
+#     find("#email").set "email*incorreto,com"
+#     find("#password").set "pet123"
+#     click_button "Cadastrar"
+# end
 
-# sem_senha
-Quando('submeto o meu cadastro sem a senha') do
-    find("#fullName").set "Petherson Erasmo"
-    find("#email").set Faker::Internet.free_email # Substituí o e-mail por esse comando da biblioteca Faker.
-    click_button "Cadastrar"
-end
+# # sem_senha
+# O seguinte step foi substituído pelo 1° step "Quando"
+# Quando('submeto o meu cadastro sem a senha') do
+#     find("#fullName").set "Petherson Erasmo"
+#     find("#email").set Faker::Internet.free_email # Substituí o e-mail por esse comando da biblioteca Faker.
+#     click_button "Cadastrar"
+# end
 
 # Com o novo step Então('vejo a mensagem de alerta: {string}') do |expect_alert| eu não preciso mais das próximas linhas
 # Então('vejo a mensagem de alerta: Oops. Informe sua senha secreta!') do

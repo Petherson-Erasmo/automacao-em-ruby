@@ -23,7 +23,11 @@ Funcionalidade: Cadastro
     Cenario: Submeter cadastro sem o nome
 
         Dado que acesso a página de cadastro
-        Quando submeto o meu cadastro sem o nome
+        # Quando submeto o meu cadastro sem o nome
+        # O step comentado a cima foi substituído pelo step a baixo para deixar o código mais enxuto 
+        Quando submeto o seguinte formulário de cadastro:
+        |nome            |email               |senha |
+        |                |pethersone@gmail.com|pet123|
         # Antes a mensagem de alerta estava sem as aspas duplas, passando a mensagem em aspas duplas elas passam a ser um argumento.
         Então vejo a mensagem de alerta: "Oops. Informe seu nome completo!"
 
@@ -32,7 +36,11 @@ Funcionalidade: Cadastro
     Cenario: Submeter cadastro sem o email
 
         Dado que acesso a página de cadastro
-        Quando submeto o meu cadastro sem o email
+        # Quando submeto o meu cadastro sem o email
+        # O step comentado a cima foi substituído pelo step a baixo para deixar o código mais enxuto
+        Quando submeto o seguinte formulário de cadastro:
+        |nome            |email               |senha |
+        |Petherson Erasmo|                    |pet123|
         # Antes a mensagem de alerta estava sem as aspas duplas, passando a mensagem em aspas duplas elas passam a ser um argumento.
         Então vejo a mensagem de alerta: "Oops. Informe um email válido!"
 
@@ -41,7 +49,11 @@ Funcionalidade: Cadastro
     Cenario: Submeter cadastro com email incorreto
 
         Dado que acesso a página de cadastro
-        Quando submeto o meu cadastro com o email incorreto
+        # Quando submeto o meu cadastro com o email incorreto
+        # O step comentado a cima foi substituído pelo step a baixo para deixar o código mais enxuto
+        Quando submeto o seguinte formulário de cadastro:
+        |nome            |email               |senha |
+        |Petherson Erasmo|pethersone2gmail.com|pet123|
         # Antes a mensagem de alerta estava sem as aspas duplas, passando a mensagem em aspas duplas elas passam a ser um argumento.
         Então vejo a mensagem de alerta: "Oops. Informe um email válido!"
 
@@ -50,6 +62,10 @@ Funcionalidade: Cadastro
     Cenario: Submeter cadastro sem a senha
 
         Dado que acesso a página de cadastro
-        Quando submeto o meu cadastro sem a senha
+        # Quando submeto o meu cadastro sem a senha
+        # O step comentado a cima foi substituído pelo step a baixo para deixar o código mais enxuto
+        Quando submeto o seguinte formulário de cadastro:
+        |nome            |email               |senha |
+        |Petherson Erasmo|pethersone@gmail.com|      |
         # Antes a mensagem de alerta estava sem as aspas duplas, passando a mensagem em aspas duplas elas passam a ser um argumento.
         Então vejo a mensagem de alerta: "Oops. Informe sua senha secreta!"
