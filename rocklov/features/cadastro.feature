@@ -10,7 +10,12 @@ Funcionalidade: Cadastro
     Cenario: Fazer cadastro
 
         Dado que acesso a página de cadastro
-        Quando submeto o meu cadastro completo
+        # Quando submeto o meu cadastro completo
+        # Refatorei o step Quando para usar o recurso do datatable
+        # para colocar a massa de teste explicita no cenário sem perder a essência.
+        Quando submeto o seguinte formulário de cadastro:
+        |nome            |email               |senha |
+        |Petherson Erasmo|pethersone@gmail.com|pet123|
         Então sou redirecionado para o Dashboard
 
     @sem_nome
