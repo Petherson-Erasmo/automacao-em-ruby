@@ -31,10 +31,11 @@ Quando('submeto o seguinte formulário de cadastro:') do |table|
     click_button "Cadastrar"
 end
   
-Então('sou redirecionado para o Dashboard') do
-    # O expect é um recurso de validação do rspec. O page é um objeto do capybara
-    expect(page).to have_css ".dashboard"
-end
+# O próximo step Então vai passar a ser usado no arquivo shared_steps.rb já que é o mesmo comportamento dos aquivos cadastro e login.  
+# Então('sou redirecionado para o Dashboard') do
+#     # O expect é um recurso de validação do rspec. O page é um objeto do capybara
+#     expect(page).to have_css ".dashboard"
+# end
 
 # # sem_nome
 # O seguinte step foi substituído pelo 1° step "Quando"
@@ -91,7 +92,8 @@ end
 #     expect(alert.text).to eql "Oops. Informe sua senha secreta!"
 # end
 
-Então('vejo a mensagem de alerta: {string}') do |expect_alert| # O expect_alert é um argumento.
-    alert = find(".alert-dark")
-    expect(alert.text).to eql expect_alert
-end
+# O próximo step Então vai passar a ser usado no arquivo shared_steps.rb já que é o mesmo comportamento dos aquivos cadastro e login.  
+# Então('vejo a mensagem de alerta: {string}') do |expect_alert| # O expect_alert é um argumento.
+#     alert = find(".alert-dark")
+#     expect(alert.text).to eql expect_alert
+# end

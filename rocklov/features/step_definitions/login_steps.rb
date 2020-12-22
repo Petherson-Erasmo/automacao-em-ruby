@@ -8,3 +8,5 @@ Quando('submeto minhas credenciais com {string} e {string}') do |email, password
 
     click_button "Entrar"
 end
+
+# O step Então está sendo usada no arquivo shared_steps.rb já que é o mesmo comportamento dos aquivos cadastro e login.
