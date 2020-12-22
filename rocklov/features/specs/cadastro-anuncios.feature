@@ -8,7 +8,9 @@ Funcionalidade: Cadastro de Anuúncios
 
     Cenario: Novo equipamento
 
-        Dado que eu tenho o seguinte equipamento:
+        Dado que estou logado como "heavymetal@gmail.com" e "pet123"
+        E que acesso o fomulário de cadastro de anúncio
+        E que eu tenho o seguinte equipamento:
         # A tabela criada é uma tabela de chave valor, deferente da tabela utilizada no arquivo cadastro.feature.
         # É recomendado usar essa tabela quando se tenho apenas um único registro. 
             | imagem    | fender-sb.jpg |
