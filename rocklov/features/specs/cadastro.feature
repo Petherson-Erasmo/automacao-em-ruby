@@ -18,18 +18,18 @@ Funcionalidade: Cadastro
             | Petherson Erasmo | pethersone@gmail.com | pet123 |
         Então sou redirecionado para o Dashboard
 
-    # Como o comportamento dos cenários estão sendo iguais está mudando apenas os dados de entrada (Input) e os de saída (output)
+    # Como o comportamento dos cenários estão sendo iguais o que está mudando é apenas os dados de entrada (Input) e os de saída (output)
     # Podemos usar o Scenário Outline ou Esquema do Cenário
     Esquema do Cenario: Tentativa de Cadastro
         Dado que acesso a página de cadastro
         Quando submeto o seguinte formulário de cadastro:
             | nome         | email         | senha         |
             | <nome_input> | <email_input> | <senha_input> |
-        # Na linha a cima eu estou referenciando o campo com a mátris
+        # Na linha acima é referenciando o campo com a matriz
         Então vejo a mensagem de alerta: "<mensagem_output>"
 
-        # A seguir tem um exemplo de uma mátris de exemplo
-        # Eu preciso referenciar a massa de teste (mátris) com a execução do cenário (Dado, Quando, Então)
+        # A seguir tem um exemplo de uma matriz de exemplo
+        # É referenciado a massa de teste (matriz) com a execução do cenário (Dado, Quando, Então)
         Exemplos:
             | nome_input       | email_input          | senha_input | mensagem_output                  |
             |                  | pethersone@gmail.com | pet123      | Oops. Informe seu nome completo! |

@@ -1,5 +1,5 @@
 Dado('que acesso a página de cadastro') do
-    visit "http://rocklov-web:3000/signup"
+    visit "/signup" # passamos a usar a rota padrão no arquivo env.rb
 end
   
 # Esse step vai ser substituído pelo próximo step já que vou usar o datatable.

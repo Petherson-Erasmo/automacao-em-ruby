@@ -6,4 +6,5 @@ require "faker"
 Capybara.configure do |config|
     # se eu deixar apenas com o :selenium vai ser utilizado o firefox
     config.default_driver = :selenium_chrome
+    config.app_host = "http://rocklov-web:3000"
 end
