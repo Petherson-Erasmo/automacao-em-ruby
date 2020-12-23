@@ -1,4 +1,5 @@
-Dado('que estou logado como {string} e {string}') do |email, password| 
+Dado('que estou logado como {string} e {string}') do |email, password|
+    @email = email # usado quando chamamos o método MongoDB
     visit "/"      
     find("input[placeholder='Seu e-email']").set email
     find("input[type=password]").set password
@@ -19,6 +20,9 @@ Dado('que eu tenho o seguinte equipamento:') do |table|
     @anuncio = table.rows_hash
     # A variável anuncio está sendo alocada na memória só nesse step, mas como precisamos dela na step quando precisamos
     # converter ela para uma variável de instância (algo parecido como uma variável global). Usamos o @
+
+    # Na próxima linha chamamos o método para remover o anúncio definido no arquivo mongo.rb
+    MongoDB.new.remove_equipment(@anuncio[:nome], @email) # Precisamos passar o email do dono que obtemos pela variavél de instância @email
 end
   
 Quando('submeto o cadastro desses itens') do
@@ -40,12 +44,10 @@ Quando('submeto o cadastro desses itens') do
     find("input[placeholder^=Valor]").set @anuncio[:preco]
 
     click_button "Cadastrar"
-    sleep 5
 end
   
 Então('devo ver esse item no meu Dashboard') do
     anuncios = find(".equipo-list")
     expect(anuncios).to have_content @anuncio[:nome]
     expect(anuncios).to have_content "R$#{@anuncio[:preco]}/dia"
-    sleep 5
 end
