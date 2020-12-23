@@ -5,14 +5,25 @@ Mongo::Logger.logger = Logger.new("./logs/mongo.log")
 
 class MongoDB
 
+    # A seguir estou definindo 2 propriedades/características
+    # Agora passamos a ter as coleções do mongo como propriedades da classe
+    attr_accessor :users_collection, :equipamento
+
+    def initialize # método construtor
+        # Na linha a seguir conectamos com o mongo e guardamos os parâmetros na variável client
+        client = Mongo::Client.new('mongodb://rocklov-db:27017/rocklov') 
+        @users_collection = client[:users]
+        @equipamento = client[:equipos]
+    end
+
     def remove_user(argumento_email)
         
         # Na linha a seguir conectamos com o mongo e guardamos os parâmetros na variável client
-        client = Mongo::Client.new('mongodb://rocklov-db:27017/rocklov')
+        # client = Mongo::Client.new('mongodb://rocklov-db:27017/rocklov') # passamos a usar no método construtor
         # Na próxima linha conectamos a uma coleção que queremos manipular (no caso users)
-        users_collection = client[:users]
+        # users_collection = client[:users] # passamos a usar no método construtor
         # Na próxima linha excluimos o e-mail.
-        users_collection.delete_many({email: argumento_email})
+        @users_collection.delete_many({email: argumento_email})
     end
 
     # Se executar o teste com o método a baixo, vamos apagar todos os anúncios inclusive de outras pessoas também.
@@ -29,11 +40,11 @@ class MongoDB
     # Na massa de teste temos acesso apenas ao email e não o id
     def get_user(argumento_email) # Através do email conseguimos buscar e encontrar o Id da pessoa
         # Na linha a seguir conectamos com o mongo e guardamos os parâmetros na variável client
-        client = Mongo::Client.new('mongodb://rocklov-db:27017/rocklov')
+        # client = Mongo::Client.new('mongodb://rocklov-db:27017/rocklov') # passamos a usar no método construtor
         # Na próxima linha conectamos a uma coleção que queremos manipular (no caso users)
-        users_collection = client[:users]
+        # users_collection = client[:users] # passamos a usar no método construtor
         # Na próxima linha buscamos o usuário no banco de dados.
-        usuario = users_collection.find({email: argumento_email}).first
+        usuario = @users_collection.find({email: argumento_email}).first
         # O método find sempre retorna uma lista de usuários, por isso precisamos do first se não retornará uma única posição
         return usuario[:_id] # O [:_id] traz apenas o id
     end
@@ -41,11 +52,11 @@ class MongoDB
     def remove_equipment (nome, email) # Precisamos receber o email do dono do anúncio para obter o ID
         user_id = get_user(email)
         # Na linha a seguir conectamos com o mongo e guardamos os parâmetros na variável client
-        client = Mongo::Client.new('mongodb://rocklov-db:27017/rocklov')
+        # client = Mongo::Client.new('mongodb://rocklov-db:27017/rocklov') # passamos a usar no método construtor
         # Na próxima linha conectamos a uma coleção que queremos manipular (no caso equipos)
-        equipamento = client[:equipos]
+        # equipamento = client[:equipos] # passamos a usar no método construtor
         # Na próxima linha excluimos o e-mail.
-        equipamento.delete_many({name: nome, user: user_id}) # Passo o campo (user) da tabela e passo a variável
+        @equipamento.delete_many({name: nome, user: user_id}) # Passo o campo (user) da tabela e passo a variável
     end
 
 end
