@@ -1,4 +1,5 @@
 # Usando o padrão Page Object + App Action
+# Esse arquivo encapsula o login de usuário
 
 class LoginPage
     # Normalmente essa classe não consegue ter acesso aos recursos do capybara, pois o cucumber não sabe que dentro da classe precisamos do capybara

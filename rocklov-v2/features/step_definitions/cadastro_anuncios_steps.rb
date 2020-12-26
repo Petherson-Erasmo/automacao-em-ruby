@@ -8,11 +8,10 @@ Dado('que estou logado como {string} e {string}') do |email, password|
     # find("input[type=password]").set password
     # click_button "Entrar"
 
-    # Estou estanciando a classe LoginPage e guardando na variável login_page
-    login_page = LoginPage.new
+    # Passei a estanciar a variável login_page no arquivo hooks(gancho)
     # Na classe LoginPage já programamos para entrar na página, agora basta chamar o método.
-    login_page.open
-    login_page.with(email, password) # Padrão app action, esse método é responsável pelo login.
+    @login_page.open
+    @login_page.with(email, password) # Padrão app action, esse método é responsável pelo login.
 
     # Vamos passar a usar o padrão app actions que dá responsabilidades para os métodos, então os comandos da linha de baixo não servem.
     # # Na classe LoginPage já programamos para encontrar o campo email, agora basta chamar o método e informar o valor que queremos.
@@ -25,9 +24,8 @@ end
                                                                                
 Dado('que acesso o fomulário de cadastro de anúncio') do
     # Esse step é uma pré-condição, logo precisamos garantir que foi para o formulário de anúncio
-    click_button "Criar anúncio"
-    # Então colocamos uma checkpoint
-    expect(page).to have_css "#equipoForm"
+    @dash_page.goto_equipment_form
+    # Passamos o checkpoint para o arquivo equipment.rb
 end                                                                          
 
 Dado('que eu tenho o seguinte equipamento:') do |table|
@@ -42,28 +40,10 @@ Dado('que eu tenho o seguinte equipamento:') do |table|
 end
   
 Quando('submeto o cadastro desses itens') do
-    # O código Dir.pwd é um recurso do ruby que faz com que conseguimos o diretório de execução do projeto
-    # Em seguida passamos o caminho relativo e depois concateno com o nome do arquivo que vem da chave imagem
-    img = Dir.pwd + "/features/support/fixtures/images/" + @anuncio[:imagem]
-
-    # Apesar do elemento ser exibido no HTML ele está definido como display:none por isso o capybara não encontra
-    # para resolver esse problema passamos o visible: false
-    find("#thumbnail input[type=file]", visible: false).set img
-    # o $ serve para buscar o valor que termina com o valor informado (no caso equipamento)
-    # o * serve para buscar o valor que contém o valor informado (no caso equipamento)
-    find("input[placeholder$=equipamento]").set @anuncio[:nome]
-    # Buscamos pelo elemento que tem o ID category, em seguida buscamos pelo elemento option que contém o texto quem vem
-    # da variável anúncio que passa a chave categoria
-    # para selecionar usamos o select_option
-    find("#category").find('option',text: @anuncio[:categoria]).select_option
-    # o ^ serve para buscar o valor que começa com o valor informado (no caso Valor)
-    find("input[placeholder^=Valor]").set @anuncio[:preco]
-
-    click_button "Cadastrar"
+    @equipment_page.create(@anuncio)
 end
   
 Então('devo ver esse item no meu Dashboard') do
-    anuncios = find(".equipo-list")
-    expect(anuncios).to have_content @anuncio[:nome]
-    expect(anuncios).to have_content "R$#{@anuncio[:preco]}/dia"
+    expect(@dash_page.equipment_list).to have_content @anuncio[:nome]
+    expect(@dash_page.equipment_list).to have_content "R$#{@anuncio[:preco]}/dia"
 end
