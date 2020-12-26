@@ -1,26 +1,35 @@
-Dado('que estou logado como {string} e {string}') do |email, password|
+Dado('Login com {string} e {string}') do |email, password|
     @email = email # usado quando chamamos o método MongoDB
-    # Quando atualizamos a versão do rocklov-web o dev corrigiu o erro de digitação no campo do placeholder que estava e-email
-    # Então, atualizamos o campo e percebemos que se tivéssemos muitos arquivos o impacto para manutenção seria grande.
-    # Como solução usamos o padrão Page Object no arquivo login_pages.rb
-    # visit "/"      
-    # find("input[placeholder='Seu email']").set email
-    # find("input[type=password]").set password
-    # click_button "Entrar"
 
     # Passei a estanciar a variável login_page no arquivo hooks(gancho)
-    # Na classe LoginPage já programamos para entrar na página, agora basta chamar o método.
+    # Na classe LoginPage programamos para entrar na página, agora basta chamar o método.
     @login_page.open
     @login_page.with(email, password) # Padrão app action, esse método é responsável pelo login.
+end
 
-    # Vamos passar a usar o padrão app actions que dá responsabilidades para os métodos, então os comandos da linha de baixo não servem.
-    # # Na classe LoginPage já programamos para encontrar o campo email, agora basta chamar o método e informar o valor que queremos.
-    # login_page.campo_email.set email
-    # # Na classe LoginPage já programamos para encontrar o campo senha, agora basta chamar o método e informar o valor que queremos.
-    # login_page.campo_senha.set password
-    # # Na classe LoginPage já programamos para clicar no botão, agora basta chamar o método.
-    # login_page.botao_entrar
-end                                                                          
+# Dado('que estou logado como {string} e {string}') do |email, password|
+#     @email = email # usado quando chamamos o método MongoDB
+#     # Quando atualizamos a versão do rocklov-web o dev corrigiu o erro de digitação no campo do placeholder que estava e-email
+#     # Então, atualizamos o campo e percebemos que se tivéssemos muitos arquivos o impacto para manutenção seria grande.
+#     # Como solução usamos o padrão Page Object no arquivo login_pages.rb
+#     # visit "/"      
+#     # find("input[placeholder='Seu email']").set email
+#     # find("input[type=password]").set password
+#     # click_button "Entrar"
+
+#     # Passei a estanciar a variável login_page no arquivo hooks(gancho)
+#     # Na classe LoginPage programamos para entrar na página, agora basta chamar o método.
+#     @login_page.open
+#     @login_page.with(email, password) # Padrão app action, esse método é responsável pelo login.
+
+#     # Vamos passar a usar o padrão app actions que dá responsabilidades para os métodos, então os comandos da linha de baixo não servem.
+#     # # Na classe LoginPage já programamos para encontrar o campo email, agora basta chamar o método e informar o valor que queremos.
+#     # login_page.campo_email.set email
+#     # # Na classe LoginPage já programamos para encontrar o campo senha, agora basta chamar o método e informar o valor que queremos.
+#     # login_page.campo_senha.set password
+#     # # Na classe LoginPage já programamos para clicar no botão, agora basta chamar o método.
+#     # login_page.botao_entrar
+# end                                                                          
                                                                                
 Dado('que acesso o fomulário de cadastro de anúncio') do
     # Esse step é uma pré-condição, logo precisamos garantir que foi para o formulário de anúncio
