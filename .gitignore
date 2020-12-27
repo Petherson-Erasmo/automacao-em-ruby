@@ -1,2 +1,4 @@
-rocklov\logs\*
-rocklov-v2\logs\*
+rocklov/logs/*
+rocklov-v2/logs/*
+/rocklov/logs/*
+/rocklov-v2/logs/*
