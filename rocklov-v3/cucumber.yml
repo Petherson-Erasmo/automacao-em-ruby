@@ -1,0 +1,3 @@
+---
+# caso queira ativar o relatório em nuvem basta tirar o -quiet
+default: --publish-quiet
