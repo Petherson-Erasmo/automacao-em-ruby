@@ -4,12 +4,26 @@ require "capybara/cucumber"
 require "faker"
 
 # Na seguinte linha de comando programamos para carregar um arquivo específico
-CONFIG = YAML.load_file(File.join(Dir.pwd, "features/support/config/#{ENV["CONFIG"]}"))
+CONFIG = YAML.load_file(File.join(Dir.pwd, "features/support/config/#{ENV["CONFIG"]}")) # É uma constante
+
+case ENV["BROWSER"]
+    when "firefox"
+        @driver = :selenium
+    when "fire_headless"
+        @driver = :selenium_headless
+    when "chrome"
+        @driver = :selenium_chrome
+    when "chrome_headless"
+        @driver = :selenium_chrome_headless
+    else
+    # O raise não tentar executar os teste ele vai mostrar logo a mensagem
+        raise "Variável @drive não definida, por favor defina qual navegador vai ser utilizado no arquivo cucumber.yml"
+end
 
 # Na próxima linha estou configurando o capybara
 Capybara.configure do |config|
-    # se eu deixar apenas com o :selenium vai ser utilizado o firefox
-    config.default_driver = :selenium_chrome
+    # Se eu deixar apenas com o :selenium vai ser utilizado o firefox
+    config.default_driver = @driver
     config.app_host = CONFIG["url"] # passamos a url no arquivo local.yml
     config.default_max_wait_time = 10 # define o tempo máx que o capybara vai esperar por um elemento na tela
 end
