@@ -1,17 +1,10 @@
-require "httparty"
+require_relative "routes/sessions"
 
 describe "POST /sessions" do
     context "login com sucesso" do
         before(:all) do # sem o (:all) faz com que rode o gancho para cada it
             payload = { email: "heavymetal@gmail.com", password: "pet123" }
-
-            @result = HTTParty.post(
-                "http://rocklov-api:3333/sessions", # Nessa linha eu já consigo fazer uma requisição do tipo post
-                body: payload.to_json, # depois da url eu converto o corpo para o formato json quando vou enviar para a api
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            )
+            @result = Sessions.new.login(payload)
         end
             
         it "valida status code" do
@@ -25,5 +18,65 @@ describe "POST /sessions" do
             # puts result.class # Desta forma vai retornar o tipo response que é do HTTParty mas precisamos do tipo hash do ruby
             # puts result.parsed_response # Deste jeito transformamos em um hash
         end
-    end 
+    end
+    
+    examples = [
+        {
+            title: "senha incorreta",
+            payload: { email: "heavymetal@gmail.com", password: "123456" },
+            code: 401,
+            error: "Unauthorized",
+        },
+        {
+            title: "email incorreto",
+            payload: { email: "naocadastrado@gmail.com", password: "123456" },
+            code: 401,
+            error: "Unauthorized",
+        },
+        {
+            title: "email em branco",
+            payload: { email: "", password: "123456" },
+            code: 412,
+            error: "required email",
+        },
+        {
+            title: "sem o campo email",
+            payload: { password: "123456" },
+            code: 412,
+            error: "required email",
+        },
+        {
+            title: "senha em branco",
+            payload: { email: "heavymetal@gmail.com", password: "" },
+            code: 412,
+            error: "required password",
+        },
+        {
+            title: "sem campo senha",
+            payload: { email: "heavymetal@gmail.com" },
+            code: 412,
+            error: "required password",
+        },
+    ]
+
+    examples.each do |ex|
+        context "#{ex[:title]}" do
+            before(:all) do # sem o (:all) faz com que rode o gancho para cada it
+                @result = Sessions.new.login(ex[:payload])
+            end
+                
+            it "valida status code #{ex[:code]}" do
+                # Guardo o resultado do método post dentro da variável result e valido ela
+                expect(@result.code).to eql ex[:code]
+            end
+    
+            it "valida id do usuário" do
+                expect(@result.parsed_response["error"]).to eql ex[:error] # Nessa linha validamos se a quantidade de caracteres é a mesma quantidade do id
+    
+                # puts result.class # Desta forma vai retornar o tipo response que é do HTTParty mas precisamos do tipo hash do ruby
+                # puts result.parsed_response # Deste jeito transformamos em um hash
+            end
+        end
+    end
+     
 end
