@@ -1,6 +1,6 @@
 rocklov/logs/*
 rocklov-v2/logs/*
-rocklov-v3/logs/*
+rocklov-v3/web/logs/*
 /rocklov/logs/*
-/rocklov-v3/logs/*
-rocklov-v3/debug.log
+/rocklov-v3/web/logs/*
+rocklov-v3/web/debug.log

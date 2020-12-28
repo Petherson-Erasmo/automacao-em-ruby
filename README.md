@@ -10,3 +10,5 @@ Apartir da pasta rocklov-v3 passamos a usar o relatório do allure-cucumber. Par
 Para rodar os testes no Chrome é preciso baixar o chromedrive na mesma versão do navegador pelo link https://chromedriver.storage.googleapis.com/index.html
 Para rodar os teste no Firefox é preciso baixar o geckodriver com a mesma arquitetura do processador pelo link https://github.com/mozilla/geckodriver/releases
 Depois é preciso ir na variável de ambiente do computador e colocar o caminho da pasta que tem os drivers para a pasta se tornar global.
+
+Para realizarmos os testes na API usamos o Insomnia

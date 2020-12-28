@@ -1,4 +1,0 @@
----
-# Neste arquivo configuramos as URL que usamos para gerar os teste no local, caso queira rodar os arquivos no ambiente e homologação usamos o arquivo homologação.yml
-url: http://rocklov-web:3000
-mongo: mongodb://rocklov-db:27017/rocklov
