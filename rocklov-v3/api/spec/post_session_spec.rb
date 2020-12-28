@@ -1,4 +1,5 @@
 require_relative "routes/sessions"
+require_relative "helpers"
 
 describe "POST /sessions" do
     context "login com sucesso" do
@@ -20,44 +21,49 @@ describe "POST /sessions" do
         end
     end
     
-    examples = [
-        {
-            title: "senha incorreta",
-            payload: { email: "heavymetal@gmail.com", password: "123456" },
-            code: 401,
-            error: "Unauthorized",
-        },
-        {
-            title: "email incorreto",
-            payload: { email: "naocadastrado@gmail.com", password: "123456" },
-            code: 401,
-            error: "Unauthorized",
-        },
-        {
-            title: "email em branco",
-            payload: { email: "", password: "123456" },
-            code: 412,
-            error: "required email",
-        },
-        {
-            title: "sem o campo email",
-            payload: { password: "123456" },
-            code: 412,
-            error: "required email",
-        },
-        {
-            title: "senha em branco",
-            payload: { email: "heavymetal@gmail.com", password: "" },
-            code: 412,
-            error: "required password",
-        },
-        {
-            title: "sem campo senha",
-            payload: { email: "heavymetal@gmail.com" },
-            code: 412,
-            error: "required password",
-        },
-    ]
+    # examples = [
+    #     {
+    #         title: "senha incorreta",
+    #         payload: { email: "heavymetal@gmail.com", password: "123456" },
+    #         code: 401,
+    #         error: "Unauthorized",
+    #     },
+    #     {
+    #         title: "email incorreto",
+    #         payload: { email: "naocadastrado@gmail.com", password: "123456" },
+    #         code: 401,
+    #         error: "Unauthorized",
+    #     },
+    #     {
+    #         title: "email em branco",
+    #         payload: { email: "", password: "123456" },
+    #         code: 412,
+    #         error: "required email",
+    #     },
+    #     {
+    #         title: "sem o campo email",
+    #         payload: { password: "123456" },
+    #         code: 412,
+    #         error: "required email",
+    #     },
+    #     {
+    #         title: "senha em branco",
+    #         payload: { email: "heavymetal@gmail.com", password: "" },
+    #         code: 412,
+    #         error: "required password",
+    #     },
+    #     {
+    #         title: "sem campo senha",
+    #         payload: { email: "heavymetal@gmail.com" },
+    #         code: 412,
+    #         error: "required password",
+    #     },
+    # ]
+
+# A próxima linha de código serve para utilizarmos a massa de teste a partir de um arquivo separado
+    # examples = YAML.load(File.read(Dir.pwd + "/spec/fixtures/login.yml"), symbolize_names: true)
+
+    examples = Helpers::get_fixtures("login") # encapsulamos o método para utilizar o arquivo com a massa de teste
 
     examples.each do |ex|
         context "#{ex[:title]}" do
