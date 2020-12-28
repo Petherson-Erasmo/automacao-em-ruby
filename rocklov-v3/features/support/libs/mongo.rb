@@ -11,7 +11,7 @@ class MongoDB
 
     def initialize # método construtor
         # Na linha a seguir conectamos com o mongo e guardamos os parâmetros na variável client
-        client = Mongo::Client.new('mongodb://rocklov-db:27017/rocklov')
+        client = Mongo::Client.new(CONFIG["mongo"])
         # Na próxima linha conectamos a uma coleção que queremos manipular (no caso users)
         @users_collection = client[:users]
         # Na próxima linha conectamos a uma coleção que queremos manipular (no caso equipos)
