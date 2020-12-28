@@ -1,3 +1,7 @@
 ---
 # caso queira ativar o relatório em nuvem basta tirar o -quiet
-default: --publish-quiet
+default: --publish-quiet -p allure -p bdd
+bdd: -f pretty # o pretty é o relatório padrão
+dots: -f progress # o progress vai mostrar apenas alguns pontos na saida do terminal
+html: -f html -o logs/report.html # vai gerar relatórios em um arquivo html e salvar na pasta logs
+allure: --format AllureCucumber::CucumberFormatter --out=logs # vai gerar os relatórios no formato do allure

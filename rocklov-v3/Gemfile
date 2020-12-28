@@ -2,6 +2,7 @@
 
 source "https://rubygems.org"
 
+gem 'allure-cucumber', '2.13.6.4' # Essa gem vai gerar relatório um relatório melhor que o padrão do cucumber
 gem 'cucumber', '5.2' # Essa gem vai executar os cenários através da sintax do gherkin que são os cenários em BDD.
 gem 'capybara', '3.33' # Essa gem é para automatizar testes para aplicação web simulando o comportamento de um usuário.
 gem 'selenium-webdriver', '3.142.7' # Essa gem serve para abrir o navegador.
