@@ -35,4 +35,8 @@ class MongoDB
         @equipamento.delete_many({name: nome, user: obj_id}) 
     end
 
+    def get_mongo_id # vai gerar um objectid aleatório
+        return BSON::ObjectId.new
+    end
+
 end

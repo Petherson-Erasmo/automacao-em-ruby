@@ -12,4 +12,13 @@ class Equipos < BaseApi # Herdando os recursos do arquivo base_api.rb
             },
         )
     end
+
+    def find_by_id(equipo_id, user_id) # como estamos encapsulando uma chamada get, no nome do método trocamos o verbo para não dar erro
+        return self.class.get( # usamos o get ao invés de post
+            "/equipos/#{equipo_id}",
+            headers: {
+                "user_id": user_id,
+            },
+        )
+    end
 end
