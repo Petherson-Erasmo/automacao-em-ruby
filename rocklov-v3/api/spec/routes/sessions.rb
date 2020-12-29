@@ -1,4 +1,4 @@
-require "httparty"
+require_relative "base_api"
 
 class Sessions < BaseApi # Herdando os recursos do arquivo base_api.rb
 
