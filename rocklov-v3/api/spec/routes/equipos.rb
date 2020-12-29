@@ -21,4 +21,13 @@ class Equipos < BaseApi # Herdando os recursos do arquivo base_api.rb
             },
         )
     end
+
+    def remove_by_id(equipo_id, user_id) # como estamos encapsulando uma chamada delete, no nome do método trocamos o verbo para não dar erro
+        return self.class.delete( # usamos o delete ao invés de post ou get
+            "/equipos/#{equipo_id}",
+            headers: {
+                "user_id": user_id,
+            },
+        )
+    end
 end
