@@ -14,12 +14,13 @@ task :local_seed do
     users = [
       { nome: "Rockeiro Raiz", email: "heavymetal@gmail.com", password: to_md5("pet123")},
       { nome: "Petherson Erasmo", email: "petherson@hotmail.com", password: to_md5("pet123")},
+      { nome: "Princesa Diana", email: "princes@diana.com", password: to_md5("pet123")},
     ]
     
     MongoDB.new.drop_danger # apaga os dados do banco
     MongoDB.new.insert_users(users) # insere todos os usuários
 
-    sh "cucumber" # faz com que já invoca o cumcber e executa todos os cenários
+    # sh "cucumber" # faz com que já invoca o cumcber e executa todos os cenários
 end
 
 task :homologacao_seed do

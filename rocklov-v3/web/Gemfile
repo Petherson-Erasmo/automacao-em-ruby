@@ -9,3 +9,4 @@ gem 'selenium-webdriver', '3.142.7' # Essa gem serve para abrir o navegador.
 gem 'rspec', '3.9' # Essa gem serve para fazer algumas validações na automação web.
 gem 'faker', '2.14' # Essa gem serve para criar dados fakes. Usamos ela para gerar emails aleatórios.
 gem 'mongo', '2.13.1'
+gem 'httparty', '0.18.1'
