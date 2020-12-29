@@ -1,2 +1,8 @@
 --require spec_helper
+
+# melhora a visualizacao dos cenarios no terminal
 --format documentation
+
+# cria dois relatorios um em html e o outro em xml e salva na pasta logs
+--format html --out logs/report.html
+--format RspecJunitFormatter --out logs/report.xml

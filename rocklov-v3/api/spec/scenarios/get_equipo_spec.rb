@@ -51,7 +51,7 @@ end
 
 describe "GET /equipos" do
     before(:all) do # serve para montar a sessão
-        payload = { email: "pudim@gmail.com", password: "pet123"}
+        payload = { email: "gandalf@gmail.com", password: "pet123"}
         result = Sessions.new.login(payload)
         @user_id = result.parsed_response["_id"]
     end

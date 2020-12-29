@@ -7,11 +7,11 @@ class MongoDB
 
     # A seguir estou definindo 2 propriedades/características
     # Agora passamos a ter as coleções do mongo como propriedades da classe
-    attr_accessor :users_collection, :equipamento
+    attr_accessor :client, :users_collection, :equipamento
 
     def initialize # método construtor
         # Na linha a seguir conectamos com o mongo e guardamos os parâmetros na variável client
-        client = Mongo::Client.new("mongodb://rocklov-db:27017/rocklov")
+        @client = Mongo::Client.new("mongodb://rocklov-db:27017/rocklov")
         # Na próxima linha conectamos a uma coleção que queremos manipular (no caso users)
         @users_collection = client[:users]
         # Na próxima linha conectamos a uma coleção que queremos manipular (no caso equipos)
@@ -37,6 +37,15 @@ class MongoDB
 
     def get_mongo_id # vai gerar um objectid aleatório
         return BSON::ObjectId.new
+    end
+
+    def insert_users(docs)
+        @users_collection.insert_many(docs)
+    end
+
+    # Para usar a variável client do método initialize precisamos transformar ela em uma variável de instância
+    def drop_danger()
+        @client.database.drop
     end
 
 end

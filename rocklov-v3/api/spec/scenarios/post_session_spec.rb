@@ -3,7 +3,7 @@
 describe "POST /sessions" do
     context "login com sucesso" do
         before(:all) do # sem o (:all) faz com que rode o gancho para cada it
-            payload = { email: "heavymetal@gmail.com", password: "pet123" }
+            payload = { email: "erasmo@gmail.com", password: "pet123" }
             @result = Sessions.new.login(payload)
         end
             
