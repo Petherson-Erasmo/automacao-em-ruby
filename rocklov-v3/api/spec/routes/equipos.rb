@@ -30,4 +30,23 @@ class Equipos < BaseApi # Herdando os recursos do arquivo base_api.rb
             },
         )
     end
+
+    def list(user_id) 
+        return self.class.get( # usamos o get ao invés de post
+            "/equipos/",
+            headers: {
+                "user_id": user_id,
+            },
+        )
+    end
+
+    def booking(equipo_id, user_locator_id)
+        return self.class.post( # método
+            "/equipos/#{equipo_id}/bookings", # rota
+            body: { date: Time.now.strftime("%d/%m/%Y")}.to_json, # monto o payload com a data atual como o formato dia/mes/ano(com 4 dígitos)
+            headers: {
+                "user_id": user_locator_id, # eu pego o user_id de quem está aludando
+            },
+        )
+    end
 end
