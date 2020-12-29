@@ -1,0 +1,36 @@
+# Neste arquivo vamos criar uma "semente" para cadastrar os usuários das massas de teste
+
+require "digest/md5" # O mongo criptografa a senha com o tipo md5 com essa biblioteca conseguimos criptografar a string da senha 
+require_relative "features/support/libs/mongo"
+
+def to_md5(pass) # recebo a senha no formato string
+  return Digest::MD5.hexdigest(pass) # e retorna no formato md5
+end
+
+task :local_seed do
+
+    CONFIG = YAML.load_file(File.join(Dir.pwd, "features/support/config/local.yml"))
+
+    users = [
+      { nome: "Rockeiro Raiz", email: "heavymetal@gmail.com", password: to_md5("pet123")},
+      { nome: "Petherson Erasmo", email: "petherson@hotmail.com", password: to_md5("pet123")},
+    ]
+    
+    MongoDB.new.drop_danger # apaga os dados do banco
+    MongoDB.new.insert_users(users) # insere todos os usuários
+
+    sh "cucumber" # faz com que já invoca o cumcber e executa todos os cenários
+end
+
+task :homologacao_seed do
+
+    CONFIG = YAML.load_file(File.join(Dir.pwd, "features/support/config/homologacao.yml"))
+
+    users = [
+      { nome: "Rockeiro Raiz", email: "heavymetal@gmail.com", password: to_md5("pet123")},
+      { nome: "Petherson Erasmo", email: "petherson@hotmail.com", password: to_md5("pet123")},
+    ]
+    
+    MongoDB.new.drop_danger # apaga os dados do banco
+    MongoDB.new.insert_users(users) # insere todos os usuários
+end
