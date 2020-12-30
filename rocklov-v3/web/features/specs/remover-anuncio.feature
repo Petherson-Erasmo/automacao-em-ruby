@@ -30,4 +30,4 @@ Funcionalidade: Remover Anúncios
             | preco     | 150       |
         Quando eu solicito a exclusão desse item
             Mas não confirmo a solicitação
-        Então devo ver esse item no meu Dashboard
+        Então esse anúncio deve permanecer no meu Dashboard

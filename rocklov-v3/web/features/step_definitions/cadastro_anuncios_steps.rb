@@ -66,3 +66,14 @@ Então('não devo ver esse item no meu Dashboard') do
     # Fizemos o encapsulamento do ato de verificar se o anúncio aparece na Dashboard
     expect(@dash_page.has_no_equipo?(@equipo[:name])).to be true
 end
+
+# @desistir_exclusão
+Quando('não confirmo a solicitação') do
+    # Fizemos o encapsulamento do ato de cancelar a exclusão do item
+    @dash_page.cancel_removal
+end
+
+Então('esse anúncio deve permanecer no meu Dashboard') do
+    # já tínhamos feito o encapsulamento do ato de verificar se o anúncio ainda aparece na Dashboard
+    expect(@dash_page.equipment_list).to have_content @equipo[:nome]
+end

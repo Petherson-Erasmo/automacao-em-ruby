@@ -15,6 +15,8 @@ task :local_seed do
       { nome: "Rockeiro Raiz", email: "heavymetal@gmail.com", password: to_md5("pet123")},
       { nome: "Petherson Erasmo", email: "petherson@hotmail.com", password: to_md5("pet123")},
       { nome: "Princesa Diana", email: "princes@diana.com", password: to_md5("pet123")},
+      { nome: "Homer Simpson", email: "homer@simpson.com", password: to_md5("pet123")},
+      { nome: "Bender Futurama", email: "bender@futurama.com", password: to_md5("pet123")},
     ]
     
     MongoDB.new.drop_danger # apaga os dados do banco

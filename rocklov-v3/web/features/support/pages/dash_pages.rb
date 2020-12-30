@@ -25,6 +25,10 @@ class DashPage
         click_on "Sim"
     end
 
+    def cancel_removal
+        click_on "Não"
+    end
+
     def has_no_equipo?(name) # esse método retornar verdadeiro ou falso
          # Eu verifico se tem um elemento css na página e retorna verdadeiro ou falso
          return result = page.has_no_css?(".equipo-list li", text: name)
