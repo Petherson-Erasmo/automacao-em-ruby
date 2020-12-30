@@ -31,7 +31,7 @@ pipeline {
     }
     post {
         always {
-            junit 'todo'
+            allure includeProperties: false, jdk: '', results: [[path: 'rocklov-v3/web/logs']]
         }
     }
 }
