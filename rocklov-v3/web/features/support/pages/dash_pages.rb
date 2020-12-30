@@ -33,4 +33,13 @@ class DashPage
          # Eu verifico se tem um elemento css na página e retorna verdadeiro ou falso
          return result = page.has_no_css?(".equipo-list li", text: name)
     end
+
+    def order
+        # Busco a mensagem dentro dentro da class notifications
+        return find(".notifications p")
+    end
+
+    def order_actions(name)
+        return page.has_css?(".notifications button", text: name)
+    end
 end
