@@ -9,7 +9,7 @@ describe "POST /sessions" do
             
         it "valida status code" do
             # Guardo o resultado do método post dentro da variável result e valido ela
-            expect(@result.code).to eql 412
+            expect(@result.code).to eql 200
         end
 
         it "valida id do usuário" do
