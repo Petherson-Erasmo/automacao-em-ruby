@@ -1,0 +1,20 @@
+pipeline {
+    agent {
+        docker{
+            image 'ruby'
+        }
+    }
+
+    stages {
+        stage('Preparation'){
+            steps {
+                sh 'bundle install' // vamos instalar todas as gems necessárias
+            }
+        }
+        stage('Automatic testing') {
+            steps {
+                sh 'rspec'
+            }
+        }
+    }
+}
