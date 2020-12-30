@@ -17,6 +17,15 @@ pipeline {
                 sh 'cd rocklov-v3 && cd api && rspec'
             }
         }
+        stage('UAT') {
+            steps{
+                echo 'Aguardando testes de aceitação.'
+                input message: 'Podemos ir para produção?'
+            }
+        }
+        stage('Producao') {
+            echo 'API pronta para produção :D'
+        }
     }
     post {
         always {
