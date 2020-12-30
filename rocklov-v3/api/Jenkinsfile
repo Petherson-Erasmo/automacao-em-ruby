@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Preparation'){
             steps {
-                sh 'bundle install' // vamos instalar todas as gems necessárias
+                sh 'bundle install'
             }
         }
         stage('Automatic testing') {
