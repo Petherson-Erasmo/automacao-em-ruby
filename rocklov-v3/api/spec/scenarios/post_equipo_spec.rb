@@ -10,7 +10,7 @@ describe "POST /equipos" do
         before(:all) do
    
             payload = { 
-                thumbnail: Helpers::get_thumb("kramer.jpg"), 
+                thumbnail: Helpers::get_thumb("Kramer.jpg"), 
                 name: "Kramer Eddie Van Halen", 
                 category: "Cordas", 
                 price: 299,

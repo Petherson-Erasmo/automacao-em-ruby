@@ -15,8 +15,12 @@ pipeline {
         stage('Automatic testing') {
             steps {
                 sh 'cd rocklov-v3 && cd api && rspec'
-                junit 'rocklov-v3/api/logs/report.xml'
             }
+        }
+    }
+    post {
+        always {
+            junit 'rocklov-v3/api/logs/report.xml'
         }
     }
 }
