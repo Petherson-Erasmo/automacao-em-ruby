@@ -2,18 +2,19 @@ pipeline {
     agent {
         docker{
             image 'ruby'
+            args '--network rocklov-network'
         }
     }
 
     stages {
         stage('Preparation'){
             steps {
-                sh 'cd api && bundle install'
+                sh 'cd rocklov-v3 && cd api && bundle install'
             }
         }
         stage('Automatic testing') {
             steps {
-                sh 'cd api && rspec'
+                sh 'cd rocklov-v3 && cd api && rspec'
             }
         }
     }
