@@ -14,6 +14,19 @@ case ENV["BROWSER"]
     when "chrome"
         @driver = :selenium_chrome
     when "chrome_headless"
+
+        Capybara.register_driver :selenium_chrome_headless do |app|
+            Capybara::Selenium::Driver.load_selenium
+            browser_options = ::Selenium::WebDriver::Chrome::Options.new.tap do |opts|
+              opts.args << '--headless'
+              opts.args << '--disable-gpu'
+              opts.args << '--disable-site-isolation-trials'
+              opts.args << '--no-sandbox'
+              opts.args << '--disable-dev-shm-usage'
+            end
+            Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)
+          end
+
         @driver = :selenium_chrome_headless
     else
     # O raise não tentar executar os teste ele vai mostrar logo a mensagem

@@ -22,7 +22,7 @@ task :local_seed do
     MongoDB.new.drop_danger # apaga os dados do banco
     MongoDB.new.insert_users(users) # insere todos os usuários
 
-    sh "cucumber" # faz com que já invoca o cumcber e executa todos os cenários
+    sh "cucumber -p jenkins" # faz com que já invoca o cumcber e executa todos os cenários
 end
 
 task :homologacao_seed do
