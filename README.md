@@ -1,16 +1,27 @@
-# automacao-em-ruby
-Este projeto é referente ao curso de automação 180 da QA NInja. Foi criado testes automatizados para web e para API REST, utilizando o Cucumber, Ruby, Capybara, RSpec, Jenkins, especificações em BDD.
+<h1 align='Center'>Curso Automação 180</h1>
 
-Cada pasta tem uma função, a pasta code4teste é utilizada para introduzir conceitos da programação em Ruby. A pasta web-base introduz alguns conceitos em HTML. A pasta rocklov tem a primeira versão do projeto.
+## 👨‍💻 Sobre o projeto 💻
 
-Decidi criar a pasta rocklov-v2, pois, como atualizamos a versão do contêiner e estou fazendo anotações no código para explicar o funcionamento, achei válido criar essa pasta com os arquivos já feitos, mas sem os comentários que já tinha feito para facilitar a leitura do código e não ficar poluído.
+Este projeto é referente ao curso de <a href='https://pages.qaninja.academy/automacao-180/' alt='link do curso A180'> Automação 180</a> da QANInja. 
+Foi criado testes automatizados para <i>Web e para API REST, utilizando o Cucumber, Ruby, Capybara, RSpec, Jenkins, especificações em BDD.
 
-Novamente atualizamos o ambiente de teste e criamos a pasta rocklov-v3, o objetivo de criar essa pasta é poder saber até onde vai à atualização do contêiner rocklov-web, já que cada atualização muda um pouco o ambiente de teste e implementa mais coisas. Outra vantagem é que eu posso apagar os comentários antigos, já que estou usando o git para controle de versão e fazer anotações que julgo necessárias e que poderão me ajudar no futuro. Na empresa isso não vai ser necessário.
+Cada pasta é um módulo do curso, a pasta code4teste é utilizada para introduzir conceitos da programação em Ruby. A pasta web-base introduz alguns conceitos em HTML. A pasta rocklov é onde fizemos a mior parte dos projetos projeto. Durando o curso tivemos que atualizar algumas vezes o contêiner rocklov-web cada atualização muda um pouco o ambiente de teste e implementa mais coisas.
 
-A partir da pasta rocklov-v3 passamos a usar o relatório do allure-cucumber. Para funcionar é preciso da JDK 8 instalada e instalar o allure framework, se for pelo windows tem que instalar pelo scoop. Depois de instalado servidor do allure, para ver os relatórios basta digitar no terminal "allure serve logs\".
+Passamos a usar o relatório do allure-cucumber. Para funcionar é preciso da JDK 8 instalada e instalar o allure framework, se for pelo windows tem que instalar pelo scoop. Depois de instalado servidor do allure, para ver os relatórios basta digitar no terminal "allure serve logs\".
 
-Para rodar os testes no Chrome é preciso baixar o chromedrive na mesma versão do navegador pelo link https://chromedriver.storage.googleapis.com/index.html
-Para rodar os teste no Firefox é preciso baixar o geckodriver com a mesma arquitetura do processador pelo link https://github.com/mozilla/geckodriver/releases
-Depois é preciso ir na variável de ambiente do computador e colocar o caminho da pasta que tem os drivers para a pasta se tornar global.
+### Pré-requisitos
 
-Para realizarmos os testes na API usamos o Insomnia
+* Caso use o Google Chrome é preciso ter o <a href='https://chromedriver.storage.googleapis.com/index.html' alt='versões do chromedriver'>chromedrive</a> na mesma versão do navegador.
+* Caso use o Firefox é preciso baixar o <a href='https://github.com/mozilla/geckodriver/releases' alt='versões do geckodriver'>geckodriver</a> com a mesma arquitetura do processador.
+* <a href='https://rubyinstaller.org/downloads/' alt='versões para download do ruby'>Ruby+Devkit</a> 2.5.8
+* <a href='https://www.virtualbox.org/wiki/Downloads' alt='Download do virtual box'>Virtual Box</a>
+* <a href='http://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso' alt='Download do Ubuntu Serve'>Ubuntu Server </a> 20.04 LTS
+* <a href='https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html' alt='Download do Putty'>Putty</a>
+* <a href='https://gitlab.com/papito/rocklov-dc' alt='Download do Doker Composer'>Doker Composer</a>
+* <a href='https://insomnia.rest/download' alt='Download do Insomnia'>Insomnia</a>
+* <a href='https://robomongo.org/download' alt='Download do Robo Mongo'>Robo Mongo</a>
+* Tutorial para instalar e configurar o <a href='https://medium.com/qacademy/rodando-o-jenkins-em-um-container-docker-4772986eb801' alt='Download do Robo Mongo'>Jenkins</a>
+
+> Obs: No curso é utilizado o <a href='https://code.visualstudio.com/' alt='Download do VSCode'>VSCode</a> para a criação dos scripts de testes
+
+> OBS: No curso é utilizado o <a href='https://github.com/cmderdev/cmder/releases/download/v1.3.18/cmder.zip' alt='Download do CMDER'>CMDER</a> para rodar so comandos de testes simulando um ambiente linux.
